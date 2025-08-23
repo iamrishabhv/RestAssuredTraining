@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class HTTPRequests {
 	
-//	@Test
+	@Test
 	void getUsers() {
 		given()
 		
@@ -22,7 +22,7 @@ public class HTTPRequests {
 			.log().all();
 	}
 	
-//	@Test
+	@Test
 	void createUser() {
 		
 		HashMap data = new HashMap();
@@ -49,13 +49,34 @@ public class HTTPRequests {
 			.header("x-api-key", "reqres-free-v1")
 		
 		.when()
-			.get("https://reqres.in/api/users?id=8")
+			.get("https://reqres.in/api/users/8")
 		
 		.then()
 			.statusCode(200)
 			.body("data.first_name",equalTo("Lindsay"))
 			.log().all();
-	} 
+	}
+	
+	@Test
+	void updateUserById() {
+		HashMap HM = new HashMap();
+		HM.put("first_name", "Rishu");
+		HM.put("last_name", "V");
+		HM.put("email", "rishabh.v@reqres.in");
+		
+		given()
+			.header("x-api-key", "reqres-free-v1")
+			.contentType("application/json")
+			.body(HM)
+		
+		.when()
+			.put("https://reqres.in/api/users/134")
+		
+		.then()
+			.statusCode(200)
+			.log().all();
+		
+	}
 	
 
 }
