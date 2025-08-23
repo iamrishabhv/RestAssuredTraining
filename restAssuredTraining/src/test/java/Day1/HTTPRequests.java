@@ -12,6 +12,7 @@ public class HTTPRequests {
 	@Test
 	void getUsers() {
 		given()
+			.header("x-api-key", "reqres-free-v1")
 		
 		.when()
 			.get("https://reqres.in/api/users?page=2")
@@ -74,6 +75,21 @@ public class HTTPRequests {
 		
 		.then()
 			.statusCode(200)
+			.log().all();
+		
+	}
+	
+	@Test
+	void deleteUserById() {
+		
+		given()
+			.header("x-api-key", "reqres-free-v1")
+		
+		.when()
+			.delete("https://reqres.in/api/users?id=9")
+		
+		.then()
+			.statusCode(204)
 			.log().all();
 		
 	}
