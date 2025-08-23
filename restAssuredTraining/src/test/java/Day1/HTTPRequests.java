@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class HTTPRequests {
 	
 //	@Test
-	void getUser() {
+	void getUsers() {
 		given()
 		
 		.when()
@@ -22,7 +22,7 @@ public class HTTPRequests {
 			.log().all();
 	}
 	
-	@Test
+//	@Test
 	void createUser() {
 		
 		HashMap data = new HashMap();
@@ -42,6 +42,20 @@ public class HTTPRequests {
 			.statusCode(201)
 			.log().all();
 	}
+	
+	@Test
+	void getUserById() {
+		given()
+			.header("x-api-key", "reqres-free-v1")
+		
+		.when()
+			.get("https://reqres.in/api/users?id=8")
+		
+		.then()
+			.statusCode(200)
+			.body("data.first_name",equalTo("Lindsay"))
+			.log().all();
+	} 
 	
 
 }
