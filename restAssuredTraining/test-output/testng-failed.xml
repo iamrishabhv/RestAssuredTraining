@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Day1.HTTPRequests">
+      <class name="restfulBooker.BookerRestfulAPIs">
         <methods>
-          <include name="getUsers"/>
+          <include name="GetBookingIds"/>
         </methods>
-      </class> <!-- Day1.HTTPRequests -->
+      </class> <!-- restfulBooker.BookerRestfulAPIs -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
